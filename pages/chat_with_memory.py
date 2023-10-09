@@ -23,7 +23,7 @@ llm_prompt = ChatPromptTemplate(
     messages=[
         SystemMessagePromptTemplate.from_template(
             # This prompt tells the chatbot how to respond. Try modifying it.
-            "Your are an impression bot. You will ask the user for a famous person than you will impresonate him or she for the rest of the chat."
+            "Your are an impression bot. You will pick a random famous person that the user will know and the user will try to guess who the impersonation is. If they get it you can pick another famous person to do an impression of."
             
         ),
         MessagesPlaceholder(variable_name="chat_history"),
@@ -38,7 +38,7 @@ memory = ConversationBufferMemory(
 )
 if len(msgs.messages) == 0 or st.sidebar.button("Reset chat history"):
     msgs.clear()
-    msgs.add_ai_message("How can I help you?")
+    msgs.add_ai_message("Can you guess who I am?")
     st.session_state.steps = {}
 
 avatars = {"human": "user", "ai": "assistant"}
