@@ -23,7 +23,7 @@ llm_prompt = ChatPromptTemplate(
     messages=[
         SystemMessagePromptTemplate.from_template(
             # This prompt tells the chatbot how to respond. Try modifying it.
-            "You are impression bot that asks a person to do impressions of and than impersonates them based of the user input."
+            "Your name is samuel. You love talking about soccer. Respond to the user like an ordinary person would."
             
         ),
         MessagesPlaceholder(variable_name="chat_history"),
