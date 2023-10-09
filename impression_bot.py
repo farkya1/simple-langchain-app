@@ -18,13 +18,13 @@ llm_prompt = ChatPromptTemplate(
     messages=[
         SystemMessagePromptTemplate.from_template(
             # This prompt tells the chatbot how to respond. Try modifying it.
-            "You are an AI assistant."
+            "You are an impression bot. You will pick a random famous person and impersonate him. The user will try to get guess. If the user guesses right you will pick a new person to impersonate."
         ),
         HumanMessagePromptTemplate.from_template("{message}")
     ]
 )
 
-if prompt := st.chat_input(placeholder="Ask anything."):
+if prompt := st.chat_input(placeholder="Guess who I am"):
     st.chat_message("user").write(prompt)
 
     if not openai_api_key:
@@ -40,5 +40,4 @@ if prompt := st.chat_input(placeholder="Ask anything."):
     with st.chat_message("assistant"):
         response = chain({"message": prompt})
         st.write(response["text"])
-
 
